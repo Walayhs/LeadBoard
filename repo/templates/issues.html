@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issues</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+</head>
+<body>
+    <h1>Issues</h1>
+    <table id="issuesTable" class="display">
+        <thead>
+            <tr>
+                <th>Contributor ID</th>
+                <th>Avatar</th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>State</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>URL</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for issue in issues %}
+            <tr>
+                <td>{{ issue.contributor.github_id }}</td>
+                <td><img src="{{ issue.contributor.avatar_url }}" width="50" height="50"></td>
+                <td>{{ issue.contributor.username }}</td>
+                <td>{{ issue.title }}</td>
+                <td>{{ issue.state }}</td>
+                <td>{{ issue.created_at }}</td>
+                <td>{{ issue.updated_at }}</td>
+                <td><a href="{{ issue.url }}">{{ issue.url }}</a></td>
+                <td>{{ issue.contributor.score_set.first.score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#issuesTable').DataTable({
+                "searching": true  // Enables search functionality
+            });
+        });
+    </script>
+</body>
+</html>

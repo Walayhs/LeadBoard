@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pull Requests</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+</head>
+<body>
+    <h1>Pull Requests</h1>
+    <table id="pullRequestsTable" class="display">
+        <thead>
+            <tr>
+                <th>Contributor ID</th>
+                <th>Avatar</th>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Created PRs</th>
+                <th>Statuses (Open, Closed, Merged)</th>
+                <th>Link</th>
+                <th>Labels</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pr in pull_requests %}
+            <tr>
+                <td>{{ pr.contributor.github_id }}</td>
+                <td><img src="{{ pr.contributor.avatar_url }}" width="50" height="50"></td>
+                <td>{{ pr.contributor.username }}</td>
+                <td>{{ pr.contributor.score_set.first.rank }}</td>
+                <td>{{ pr.title }}</td>
+                <td>{{ pr.state }}</td>
+                <td><a href="{{ pr.url }}">{{ pr.url }}</a></td>
+                <td>
+                    {% for label in pr.labels %}
+                        {{ label.name }}
+                    {% endfor %}
+                </td>
+                <td>{{ pr.contributor.score_set.first.score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#pullRequestsTable').DataTable({
+                "searching": true  // Enables search functionality
+            });
+        });
+    </script>
+</body>
+</html>

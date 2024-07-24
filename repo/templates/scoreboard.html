@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30DaysDevChallenge</title>
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.processed.css' %}">
+    <style>
+        
+    </style>
+</head>
+<body style="padding: 0; margin: 0;">
+    
+    <nav>
+        <div class="logo">
+            <img src="{% static 'images/acmog.png' %}" alt="Logo">
+        </div>
+        <ul id="menuList">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <section class="interactive" style="height: 100%;">
+        <div class="layers">
+            <div class="pattern pattern-3">
+                <div class="inner"></div>
+            </div>
+            <div class="pattern pattern-2">
+                <div class="inner"></div>
+            </div>
+            <div class="pattern pattern-1">
+                <div class="inner"></div>
+            </div>
+        </div>
+    </section>
+   
+    <div class="floating-card">
+        <h4 class="card-title">Leaderboard</h4>
+
+        <div class="card">
+            <div class="card-body">
+                <p><h3><b>TOP CONTRIBUTORS 🔥</b></h3></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Badges</th>
+                            <th>Score</th>
+                            <th>PR's</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for score in scores %}
+                            <tr>
+                                <td style="padding: 50px; width: 15%; font-size: 35px;">{{ score.rank }}</td>
+                                <td style="width: 35%; font-size: 20px;">
+                                    <img src="{{ score.contributor.avatar_url }}" alt="Avatar" width="100" style="padding: 15px; border-radius: 70px;">
+                                    {{ score.username }}
+                                </td>
+                                <td>
+                                    <div class="badge-container">
+                                        {% for badge in score.contributor.badges.all %}
+                                            <img src="{{ badge.image_url }}" alt="{{ badge.name }}" width="100px" height="100px">
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                                <td style="width: 20%; font-size: 25px;">{{ score.score }}</td>
+                                <td style="width: 20%; font-size: 25px;">{{ score.total_prs }}</td>  <!-- New column -->
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="5">No scores available.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>  
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla, eros eu vestibulum dictum, orci urna bibendum felis, nec lacinia sapien leo non ex.</p>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: example@example.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+            <div class="footer-section social">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+        <div>
+            &copy; 2024 30Days dev. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/app.js' %}"></script>
+    <script>
+        function toggleMenu() {
+            var menuList = document.getElementById("menuList");
+            var menuIcon = document.querySelector(".menu-icon");
+            if (menuList.style.maxHeight == "0px" || menuList.style.maxHeight === "") {
+                menuList.style.maxHeight = "300px";
+                menuIcon.classList.add("open");
+            } else {
+                menuList.style.maxHeight = "0px";
+                menuIcon.classList.remove("open");
+            }
+        }
+    </script>
+</body>
+</html>
+
