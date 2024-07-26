@@ -7,10 +7,58 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>30DaysDevChallenge</title>
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">-->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.processed.css' %}">
     <style>
+        /* Add any additional styling for the search bar here */
+        .search-container {
         
+            margin: 20px;
+            text-align: center;
+            right: 70px;
+            position: absolute;
+            top: 55px;
+            
+        }
+
+        .search-input {
+            width: 150%;
+            max-width: 200px;
+            padding: 10px;
+            font-size: 12px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+        }
+        h2{
+            padding: 8px;
+        }
+        h1{
+            position: absolute;
+            left: 90px;
+            top: 22.5px;
+            color: #ffff;
+            font-size: 22px;
+            
+        }
+        @media{
+            h1{
+                top: 25px;
+                max-width: 75%;
+                font-size: 18px;
+            }
+        }
+        .gradient-text {
+            font-size: 3rem;
+            font-weight: bold;
+            background: #ffff;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            align: left;
+            padding-right: 40px;
+            padding-top:30px;
+        }
     </style>
 </head>
 <body style="padding: 0; margin: 0;">
@@ -19,6 +67,9 @@
         <div class="logo">
             <img src="{% static 'images/acmog.png' %}" alt="Logo">
         </div>
+        <div class="Title">
+            <h1>JIT ACM Student Chapter</h1>
+            </div>
         <ul id="menuList">
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -46,12 +97,21 @@
     </section>
    
     <div class="floating-card">
-        <h4 class="card-title">Leaderboard</h4>
+       <div class="Title" >
+        <h1 class="gradient-text"><img src="{% static 'images/Logo3D.png' %}" alt="Logo" style="width:60px; height:60px;">30Days DevChallenge</h1>
+        </div>
+        
 
         <div class="card">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" onkeyup="searchTable()" placeholder="Search by name...">
+            </div>
             <div class="card-body">
                 <p><h3><b>TOP CONTRIBUTORS 🔥</b></h3></p>
-                <table>
+
+                <!-- Search Bar -->
+
+                <table id="leaderboardTable">
                     <thead>
                         <tr>
                             <th>Rank</th>
@@ -66,8 +126,10 @@
                             <tr>
                                 <td style="padding: 50px; width: 15%; font-size: 35px;">{{ score.rank }}</td>
                                 <td style="width: 35%; font-size: 20px;">
+                                    <div class="avatar-container">
                                     <img src="{{ score.contributor.avatar_url }}" alt="Avatar" width="100" style="padding: 15px; border-radius: 70px;">
                                     {{ score.username }}
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="badge-container">
@@ -92,22 +154,28 @@
 
     <footer class="footer">
         <div class="footer-content">
+            <div class="footer-section sponsor">
+                <p><b>SPONSORED BY</b></p>
+                <img src="{% static 'images/MicroWorld.png' %}" alt="Logo" style="width: 180px; height: 80px; padding-top: 10px;">
+            </div>
+            {% comment %} <div class="footer-section contact">
+                
+            </div> {% endcomment %}
             <div class="footer-section about">
                 <h4>About Us</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla, eros eu vestibulum dictum, orci urna bibendum felis, nec lacinia sapien leo non ex.</p>
-            </div>
-            <div class="footer-section contact">
-                <h4>Contact Us</h4>
-                <p>Email: example@example.com</p>
-                <p>Phone: +123 456 7890</p>
+                <p>Welcome to the ACM JIT Students Chapter! We’re a vibrant technical club at JIT, dedicated to fostering innovation and excellence in computing. </p><p> As part of the Association for Computing Machinery, we offer workshops, hackathons, and collaborative projects that bridge the gap between theory and practice.</p>
             </div>
             <div class="footer-section social">
-                <h4>Follow Us</h4>
-                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+                <h4>Contact Us</h4>
+                <p>Email: acmjit@jitnagpur.edu.in</p>
+                <p>Phone: +91 9022108125</p>
+                <br>
+                <h4>Follow Us On</h4>
+                <a href="https://github.com/jitacm">Github</a> | <a href="https://www.linkedin.com/company/acm-student-chapter-jit/">LinkedIn</a> | <a href="https://www.instagram.com/acm_jit/">Instagram</a>
             </div>
         </div>
         <div>
-            &copy; 2024 30Days dev. All rights reserved.
+            &copy; 2024 ACM JIT Student Chapter. All rights reserved.
         </div>
     </footer>
 
@@ -126,7 +194,28 @@
                 menuIcon.classList.remove("open");
             }
         }
+
+        function searchTable() {
+            var input, filter, table, rows, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toLowerCase();
+            table = document.getElementById("leaderboardTable");
+            rows = table.getElementsByTagName("tr");
+
+            for (i = 1; i < rows.length; i++) { // Skip the header row
+                rows[i].style.display = "none"; // Initially hide all rows
+                td = rows[i].getElementsByTagName("td");
+                for (var j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                            rows[i].style.display = "";
+                            break; // Break the loop if a match is found
+                        }
+                    }
+                }
+            }
+        }
     </script>
 </body>
 </html>
-
