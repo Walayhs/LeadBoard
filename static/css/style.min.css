@@ -1,0 +1,71 @@
+/* Table container to handle overflow */
+.table-container {
+    overflow-x: auto;
+}
+
+/* Center table headers and cells */
+.table th, .table td {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Custom styling for DataTables search input */
+.dataTables_wrapper .dataTables_filter {
+    text-align: left; /* Aligns the search box to the left */
+    margin-bottom: 15px; /* Adds space below the search box */
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    padding: 6px 12px; /* Padding inside the search box */
+    font-size: 14px; /* Font size for the input */
+}
+
+/* Adjust the DataTables search label */
+.dataTables_wrapper .dataTables_filter label {
+    margin-right: 10px; /* Adds space between label and input */
+    font-weight: bold; /* Makes the label bold */
+}
+
+/* Styling for pagination buttons */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 6px 12px;
+    margin: 0;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 14px;
+    display: inline-block; /* Ensure buttons align correctly */
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #0056b3;
+}
+
+/* Active page styling */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: #0056b3;
+    color: white;
+    border: 1px solid #0056b3;
+}
+
+/* Disabled state for pagination buttons */
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
+    .table {
+        font-size: 14px;
+    }
+    
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 4px 8px;
+    }
+}
+
