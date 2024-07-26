@@ -146,17 +146,70 @@ table {
   border-collapse: collapse;
   
 }
-
-th, td {
-  padding: 5px;
-  text-align: left ;
+th{
+  padding: 10px;
+  text-align: center ;
+  border-bottom: 1px solid #dddddd7b;
+  background-color:  0 8px 16px rgba(0, 0, 0, 0.2);
+}
+td {
+  padding: 20px;
+  text-align: center ;
   border-bottom: 1px solid #dddddd7b;
 }
 
-
-th {
-  background-color:  0 8px 16px rgba(0, 0, 0, 0.2);
+.avatar-container {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+  gap: 10px; /* Adjust the gap between avatars as needed */
 }
+
+.avatar-container img {
+  border-radius: 50%; /* Makes the avatars circular */
+  width: 100px; /* Adjust the size of the avatars */
+  height: 100px; /* Adjust the size of the avatars */
+  object-fit: cover; /* Ensures the image covers the entire space */
+}
+
+.Title {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  text-align: center;
+  padding: 20px;
+}
+
+.Title img {
+  margin-right: 10px; /* Adjust the space between the logo and text */
+}
+
+.gradient-text {
+  font-size: 1.5em; /* Adjust the font size as needed */
+  margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .Title {
+      flex-direction: row; /* Stack items vertically */
+      padding: 10px;
+      position: absolute;
+      top: -10px;
+  }
+  
+  .Title img {
+      margin-right: 0;
+      margin-bottom: 10px; /* Add space below the logo */
+      width: 50px; /* Adjust logo size for mobile view */
+      height: 50px; /* Adjust logo size for mobile view */
+  }
+  
+  .gradient-text {
+      font-size: 1.2em; /* Adjust font size for mobile view */
+  }
+}
+
+
 
 img {
   vertical-align: middle;
