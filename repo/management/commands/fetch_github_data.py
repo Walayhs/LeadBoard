@@ -147,7 +147,7 @@ class Command(BaseCommand):
 
             for pr in prs:
                 for label in pr.labels:
-                    score += LEVEL_POINTS.get(label['name'], 0)
+                    score += LEVEL_POINTS.get(label['name'])
 
             contributor_scores.append({
                 'contributor': contributor,
