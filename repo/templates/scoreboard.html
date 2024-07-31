@@ -7,18 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>30DaysDevChallenge</title>
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">-->
-    <link rel="stylesheet" href="{% static 'css/bootstap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrp.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.processed.css' %}">
     <style>
         /* Add any additional styling for the search bar here */
         .search-container {
-        
             margin: 20px;
             text-align: center;
             right: 70px;
             position: absolute;
             top: 55px;
-            
         }
 
         .search-input {
@@ -38,7 +36,6 @@
             top: 22.5px;
             color: #ffff;
             font-size: 22px;
-            
         }
         @media{
             h1{
@@ -59,6 +56,89 @@
             padding-right: 40px;
             padding-top:30px;
         }
+        ul.card-stacks {
+            list-style-type: none;
+            position: relative;
+            margin: 0 auto 20px;
+            padding: 0px;
+            cursor: pointer;
+            width: 200px;
+            height: 200px;
+            transition: all 0.4s cubic-bezier(.63, .15, .03, 1.02);
+            left: 20px;
+        }
+
+        ul.card-stacks li.stack {
+            position: absolute;
+            transition: all 0.4s cubic-bezier(.63, .15, .03, 1.02);
+        }
+
+        ul.card-stacks.expanded li.stack {
+            left:auto;
+            transform: translateX(calc(1% + 10px));
+        }
+
+        ul.card-stacks li.stack ul.cards-down {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        ul.card-stacks li.stack ul.cards-down li.card {
+            background-color:   0 8px 16px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+            box-shadow: 1px 2px 2px 0 #aaa;
+            transition: all 0.4s cubic-bezier(.63, .15, .03, 1.12);
+            transition-delay: 0s;
+            left: 30px;
+            position: relative;
+            top: -25px;
+            transform: rotateZ(0deg);
+        }
+
+        ul.card-stacks.expanded li.stack ul.cards-down li.card {
+            transform: rotateZ(0deg);
+            transition-delay: 0.4s;
+        }
+
+        ul.card-stacks.expanded li.stack ul.cards-down li.card.card-1 { 
+            z-index: 10; 
+            transform: translateX(calc(0 * (45% + 10px)));
+        }
+
+        ul.card-stacks.expanded li.stack ul.cards-down li.card.card-2 { 
+            z-index: 9; 
+            transform: translateX(calc(1 * (45% + 10px)));
+        }
+
+        ul.card-stacks.expanded li.stack ul.cards-down li.card.card-3 { 
+            z-index: 8; 
+            transform: translateX(calc(2 * (45% + 10px)));
+        }
+
+        ul.card-stacks.expanded li.stack ul.cards-down li.card.card-4 { 
+            z-index: 7; 
+            transform: translateX(calc(3 * (45% + 10px)));
+        }
+
+        ul.card-stacks.expanded li.stack ul.cards-down li.card.card-5 { 
+            z-index: 6; 
+            transform: translateX(calc(4 * (45% + 10px)));
+        }
+
+        ul.card-stacks.expanded li.stack ul.cards-down li.card.card-6 { 
+            z-index: 5; 
+            transform: translateX(calc(5 * (45% + 10px)));
+        }
+
+        ul.card-stacks.expanded li.stack ul.cards-down li.card.card-7 { 
+            z-index: 4; 
+            transform: translateX(calc(6 * (45% + 10px)));
+        }
     </style>
 </head>
 <body style="padding: 0; margin: 0;">
@@ -69,7 +149,7 @@
         </div>
         <div class="Title">
             <h1>JIT ACM Student Chapter</h1>
-            </div>
+        </div>
         <ul id="menuList">
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -97,11 +177,9 @@
     </section>
    
     <div class="floating-card">
-       <div class="Title" >
-        <h1 class="gradient-text"><img src="{% static 'images/Logo3D.png' %}" alt="Logo" style="width:60px; height:60px;">30Days DevChallenge</h1>
+        <div class="Title">
+            <h1 class="gradient-text"><img src="{% static 'images/Logo3D.png' %}" alt="Logo" style="width:60px; height:60px;">30DaysDevChallenge</h1>
         </div>
-        
-
         <div class="card">
             <div class="search-container">
                 <input type="text" id="searchInput" class="search-input" onkeyup="searchTable()" placeholder="Search by name...">
@@ -116,8 +194,8 @@
                         <tr>
                             <th>Rank</th>
                             <th>Name</th>
-                            <th>Badges</th>
                             <th>Score</th>
+                            <th>Badges</th>
                             <th>PR's</th>
                         </tr>
                     </thead>
@@ -127,18 +205,27 @@
                                 <td style="padding: 50px; width: 15%; font-size: 35px;">{{ score.rank }}</td>
                                 <td style="width: 35%; font-size: 20px;">
                                     <div class="avatar-container">
-                                    <img src="{{ score.contributor.avatar_url }}" alt="Avatar" width="100" style="padding: 15px; border-radius: 70px;">
-                                    {{ score.username }}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="badge-container">
-                                        {% for badge in score.contributor.badges.all %}
-                                            <img src="{{ badge.image_url }}" alt="{{ badge.name }}" width="100px" height="100px">
-                                        {% endfor %}
+                                        <img src="{{ score.contributor.avatar_url }}" alt="Avatar" width="100" style="padding: 15px; border-radius: 70px;">
+                                        {{ score.username }}
                                     </div>
                                 </td>
                                 <td style="width: 20%; font-size: 25px;">{{ score.score }}</td>
+                                <td>
+                                    <div class="badge-container">
+                                        <ul class="card-stacks" onclick="toggleExpand(this)">
+                                            {% for badge in score.contributor.badges.all %}
+                                                <li class="stack">
+                                                    <ul class="cards-down">
+                                                        <li class="card card-{{ forloop.counter }}">
+                                                            <img src="{{ badge.image_url }}" alt="{{ badge.name }}" class="badge-img">
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </td>
+                                
                                 <td style="width: 20%; font-size: 25px;">{{ score.total_prs }}</td>  <!-- New column -->
                             </tr>
                         {% empty %}
@@ -182,6 +269,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     <script>
         function toggleMenu() {
             var menuList = document.getElementById("menuList");
@@ -215,6 +303,10 @@
                     }
                 }
             }
+        }
+
+        function toggleExpand(element) {
+            element.classList.toggle("expanded");
         }
     </script>
 </body>
