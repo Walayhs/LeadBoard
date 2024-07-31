@@ -88,7 +88,7 @@ section.interactive .layers .pattern.pattern-3 .inner {
   transition: 0.3s;
   background: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
-  background-color: #0084ff71;
+  background-color: #007df343;
   padding: 15px;
 }
 
@@ -125,20 +125,39 @@ section.interactive .layers .pattern.pattern-3 .inner {
  
 }
 
-
 .badge-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  border-radius:70px;
+  gap: 10px; /* Space between badges */
+  justify-content: center; /* Center badges horizontally */
+  height: 100px;
+  width: auto;
+}
+
+.card-stacks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; /* Center items vertically */
+   /* Prevent overflow if necessary */
+  position: relative;
+  top: -25px;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60px; /* Fixed width for badges */
+  height: 60px; /* Fixed height for badges */
+  overflow: hidden; /* Hide overflow */
+  display: flex;
+  justify-content: center; /* Center badge image */
+  align-items: center; /* Center badge image */
 }
 
 .badge-img {
-  max-width: 100px;
-  max-height: 100px;
-  object-fit: contain;
-  border-radius: 50px;
-  border: 1px solid #ddd;
+  max-width: 100%; /* Responsive */
+  max-height: 100%; /* Responsive */
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
 }
 
 table {
@@ -150,12 +169,13 @@ th{
   padding: 10px;
   text-align: center ;
   border-bottom: 1px solid #dddddd7b;
-  background-color:  0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color:  0 8px 16px rgba(0, 0, 0, 0.281);
 }
 td {
   padding: 20px;
   text-align: center ;
   border-bottom: 1px solid #dddddd7b;
+  width: auto;
 }
 
 .avatar-container {
@@ -178,6 +198,7 @@ td {
   text-align: center;
   padding: 20px;
 }
+
 
 .Title img {
   margin-right: 10px; /* Adjust the space between the logo and text */
