@@ -7,6 +7,9 @@ def scoreboard(request):
     scores = Score.objects.select_related('contributor').prefetch_related('badges').order_by('rank')
     return render(request, 'scoreboard.html', {'scores': scores})
 
+def home(request):
+    return render(request, 'home.html')
+
 def issues_view(request):
     issues = Issue.objects.select_related('contributor').all()
     return render(request, 'issues.html', {'issues': issues})
