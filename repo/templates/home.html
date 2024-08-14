@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30DaysDevChallenge</title>
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">-->
+    <link rel="stylesheet" href="{% static 'css/bootstrp.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.processed.css' %}">
+    <style>
+        /* Add any additional styling for the search bar here */
+        
+        #main-head{
+            position: absolute;
+            left: 90px;
+            top: 22.5px;
+            color: #ffff;
+            font-size: 22px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: none;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 84%;
+            border-radius:90px;
+            transition: 0.3s;
+            background: 0 8px 16px rgba(0, 0, 0, 0.2);
+            
+            background-color: #1c277c43;
+            padding: 15px;
+        }
+        .Head{
+            position: absolute;
+            top: 36px;
+            color: #fff;
+            font-size: 26pt;
+        }
+        #sub-Head{
+            position: absolute;
+            bottom: 38px;
+            color: #fff;
+            font-size: 18pt;
+            margin-bottom: 25px;
+        }
+        .ranker {
+            text-align: center;
+            margin: 0 20px;
+        }
+        .circle-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: #9b9898 solid 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1px ;
+            position: relative;
+            top: 26px;
+        }
+        .circle-image2 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: #985906 solid 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1px ;
+            position: relative;
+            top: 26px;
+        }
+        .circle-image2 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        p{
+            color: #a99e9e;
+        }
+        #One{
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: #ffcc00 solid 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1px ;
+            position: relative;
+            top: 26px;
+        }
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        h2 {
+            font-size: 40px;
+            color: #eeebeb;
+            margin: 1px ;
+            position: relative;
+            top: -10px;
+        }
+        .rank {
+            font-size: 22px;
+            color: #e8e8de;
+        }
+        
+    </style>
+</head>
+<body style="padding: 0; margin: 0;">
+    
+    <nav>
+        <div class="logo">
+            <img src="{% static 'images/acmog.png' %}" alt="Logo">
+        </div>
+        <div class="Title">
+            <h1 id="main-head">JIT ACM Student Chapter</h1>
+        </div>
+        <ul id="menuList">
+            <li><a href="https://scoreboard-k3w1.onrender.com/scoreboard/">Scoreboard</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <section class="interactive" style="height: 100%;">
+        <div class="layers">
+            <div class="pattern pattern-3">
+                <div class="inner"></div>
+            </div>
+            <div class="pattern pattern-2">
+                <div class="inner"></div>
+            </div>
+            <div class="pattern pattern-1">
+                <div class="inner"></div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <h1 class="Head">🎉 Announcing the Winners of the 30-Day Dev Challenge! 🎉</h1>
+        <div class="ranker">
+            <div class="circle-image">
+                <img src="{% static 'images/2nd.jpg' %}" alt="Rank 2">
+            </div>
+            <h2>🥈</h2>
+            <p class="rank">Pratikshabhujade</p>
+            <p>Score: 490</p>
+            
+        </div>
+        <div class="ranker">
+            <div id="One" class="circle-image">
+                <img src="{% static 'images/1st.jpg' %}" alt="Rank 1">
+            </div>
+            <h2>🥇</h2>
+            <p class="rank">AnshNikhare</p>
+            <p>Score: 740</p>
+        </div>
+        <div class="ranker">
+            <div class="circle-image2">
+                <img src="{% static 'images/3rd.jpg' %}" alt="Rank 3">
+            </div>
+            <h2>🥉</h2>
+            <p class="rank">Bharat00007</p>
+            <p>Score: 470</p>
+        </div>
+        <p id="sub-Head">Congratulations to our top contributors</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section sponsor">
+                <p><b>SPONSORED BY</b></p>
+                <img src="{% static 'images/MicroWorld.png' %}" alt="Logo" style="width: 180px; height: 80px; padding-top: 10px;">
+            </div>
+            {% comment %} <div class="footer-section contact">
+                
+            </div> {% endcomment %}
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>Welcome to the ACM JIT Students Chapter! We’re a vibrant technical club at JIT, dedicated to fostering innovation and excellence in computing. </p><p> As part of the Association for Computing Machinery, we offer workshops, hackathons, and collaborative projects that bridge the gap between theory and practice.</p>
+            </div>
+            <div class="footer-section social">
+                <h4>Contact Us</h4>
+                <p>Email: acmjit@jitnagpur.edu.in</p>
+                <p>Phone: +91 9022108125</p>
+                <br>
+                <h4>Follow Us On</h4>
+                <a href="https://github.com/jitacm">Github</a> | <a href="https://www.linkedin.com/company/acm-student-chapter-jit/">LinkedIn</a> | <a href="https://www.instagram.com/acm_jit/">Instagram</a>
+            </div>
+        </div>
+        <div>
+            &copy; 2024 ACM JIT Student Chapter. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        function toggleMenu() {
+            var menuList = document.getElementById("menuList");
+            var menuIcon = document.querySelector(".menu-icon");
+            if (menuList.style.maxHeight == "0px" || menuList.style.maxHeight === "") {
+                menuList.style.maxHeight = "300px";
+                menuIcon.classList.add("open");
+            } else {
+                menuList.style.maxHeight = "0px";
+                menuIcon.classList.remove("open");
+            }
+        }
+
+        function toggleExpand(element) {
+            element.classList.toggle("expanded");
+        }
+    </script>
+</body>
+</html>
