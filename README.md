@@ -57,7 +57,7 @@ DATABASES = {
         'PORT': os.getenv("DB_PORT", "5432"),
     }
 }
-
+```
 2. SQLite (For Quick Local Testing)
 
 Django uses SQLite by default. If no database environment is configured, SQLite will work out of the box.
@@ -65,58 +65,58 @@ Django uses SQLite by default. If no database environment is configured, SQLite 
 
 ---
 
-📦 Setup Instructions
+## 📦 Setup Instructions
 
 1. Clone the Repository
 
 
-
+```
 git clone https://github.com/<your-org>/<repo-name>.git
 cd <repo-name>
-
+```
 2. Create and Activate a Virtual Environment
 
 
-
+```
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
-
+```
 3. Install the Dependencies
 
 
-
+```
 pip install -r requirements.txt
-
+```
 4. Create a .env File
 
 
 
 Create a .env in the root directory:
-
+```
 GITHUB_TOKEN=your_github_token
 REPO_OWNER=your_github_username_or_org
 REPO_NAME=your_repo_name
 # Optional: Database env variables if using PostgreSQL
-
+```
 5. Apply Migrations
 
 
-
+```
 python manage.py makemigrations
 python manage.py migrate
-
+```
 6. Run the GitHub Data Fetcher
 
 
-
+```
 python manage.py fetch_github_data
-
+```
 7. Run the Development Server
 
 
-
+```
 python manage.py runserver
-
+```
 Visit http://127.0.0.1:8000/ in your browser.
 
 
@@ -125,23 +125,15 @@ Visit http://127.0.0.1:8000/ in your browser.
 🧪 Testing
 
 Run tests with:
-
+```
 python manage.py test
-
+```
 
 ---
 
 🤝 Contributing
 
 This is an open-source initiative. Participants are encouraged to open PRs and collaborate on both backend and frontend.
-
-
----
-
-🏁 Bonus Points
-
-Contributors who participate in building this platform will earn bonus points in the 30 Days Dev Challenge leaderboard!
-
 
 ---
 
