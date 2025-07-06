@@ -1,10 +1,8 @@
----
 
 # 🚀 30 Days Dev Challenge – Project Showcase Platform
 
 This is an open-source platform built using Django that showcases all projects contributed by participants of the **30 Days Dev Challenge**. It includes a contributor scoring system based on pull requests, issues, and labels, along with badge assignment and a dynamic leaderboard.
 
----
 
 ## 🔧 Features
 
@@ -14,7 +12,6 @@ This is an open-source platform built using Django that showcases all projects c
 - Displays a project showcase
 - Open-source and editable by participants
 
----
 
 ## ⚙️ Tech Stack
 
@@ -23,7 +20,6 @@ This is an open-source platform built using Django that showcases all projects c
 - **Frontend**: HTML/CSS, Bootstrap (optional)
 - **Other**: GitHub API, TQDM (for CLI progress display)
 
----
 
 ## 🛢️ Database Environment
 
@@ -63,7 +59,6 @@ DATABASES = {
 Django uses SQLite by default. If no database environment is configured, SQLite will work out of the box.
 
 
----
 
 ## 📦 Setup Instructions
 
@@ -120,7 +115,6 @@ python manage.py runserver
 Visit http://127.0.0.1:8000/ in your browser.
 
 
----
 
 🧪 Testing
 
@@ -129,19 +123,16 @@ Run tests with:
 python manage.py test
 ```
 
----
 
 🤝 Contributing
 
 This is an open-source initiative. Participants are encouraged to open PRs and collaborate on both backend and frontend.
 
----
 
 📄 License
 
 MIT License
 
----
 
 Let me know if you want me to add:
 
